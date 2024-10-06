@@ -16,7 +16,16 @@ local servers = {
       "htmx",
     },
   },
-  ts_ls = {},
+  ts_ls = {
+    filetypes = {
+      "typescriptreact",
+      "javascriptreact",
+      "typescript",
+      "javascript",
+      "ts",
+      "js",
+    },
+  },
   gopls = {},
   tailwindcss = {
     filetypes = {
@@ -61,18 +70,18 @@ local servers = {
 
 local nvlsp = require "nvchad.configs.lspconfig"
 
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = nvlsp.on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-  }
+for name, opts in pairs(servers) do
+  opts.on_init = nvlsp.on_init
+  opts.on_attach = nvlsp.on_attach
+  opts.capabilities = nvlsp.capabilities
+  require("lspconfig")[name].setup(opts)
 end
 
--- configuring single server, example: typescript
--- lspconfig.ts_ls.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
--- }
+-- lsps with default config
+-- for _, lsp in ipairs(servers) do
+--   lspconfig[lsp].setup {
+--     on_attach = nvlsp.on_attach,
+--     on_init = nvlsp.on_init,
+--     capabilities = nvlsp.capabilities,
+--   }
+-- end
