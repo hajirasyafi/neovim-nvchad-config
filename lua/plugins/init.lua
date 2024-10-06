@@ -44,35 +44,7 @@ return {
   },
   {
     "williamboman/mason.nvim",
-
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "html-lsp",
-        "css-lsp",
-        "prettier",
-        "eslint-lsp",
-        "goimports",
-        "gofumpt",
-        "gopls",
-        "json-lsp",
-        "luacheck",
-        "prisma-language-server",
-        "pyright",
-        "python-lsp-server",
-        "tailwindcss-language-server",
-        "typescript-language-server",
-        "yaml-language-server",
-        "clang-format",
-        "cmakelang",
-        "clangd",
-        "codelldb",
-      },
-      rocks = {
-        hererocks = true,
-      },
-    },
+    opts = {},
   },
   {
     "p00f/clangd_extensions.nvim",
